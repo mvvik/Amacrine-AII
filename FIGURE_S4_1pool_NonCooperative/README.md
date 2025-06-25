@@ -1,0 +1,6 @@
+### Parameter profiles and capacitance vs. pulse duration plots
+#### One-pool Non-cooperative Exocytosis Model 
+Generated figures aren't in the manuscript, but this data is part of Fig. S4C. <br>
+Execute script RUN_THIS_FIRST.m, which will produce all figures. <br>
+Make sure you download the MATLAB parallel toolbox. <br>
+Note: parameter profile code may take 1-3 hours on a 10-core CPU.
