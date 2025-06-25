@@ -7,6 +7,6 @@
 %  Make sure you download the MATLAB Parallel Toolbox
 %  Likelihood profile may take 1-2 hours on a 10-core CPU
 
-Likelihood_Profile;  % Code will automatically load from COMMON folder
-Figure_5B_S4B;       % Code in this folder
-Figure_5C;           % Code will automatically load from COMMON folder
+Likelihood_Profile;  % Generate parameter profile (code in COMMON folder): takes some time!
+Figure_5B_S4B;       % Plot the final parameter profile
+Figure_5C;           % Plot model Cm vs pulse duration (code in COMMON folder)
