@@ -7,4 +7,4 @@
 <sup>4</sup> Dep. of Chemical Physiology and Biochemistry, Oregon Health & Science University, Portland, OR 97239 <br>
 
 #### To reproduce all figures, download the whole repository, and follow the instructions in each Figure folder. <br>
-#### Do not execute any code in CALC and COMMON folders.
+#### Do not directly execute any code in CALC and COMMON folders.
