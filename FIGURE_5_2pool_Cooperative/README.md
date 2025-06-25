@@ -1,4 +1,4 @@
-### Code for Figure 5: Parameter profiles and capacitance vs. pulse duration plots
+### Code for Figure 5: parameter profiles and capacitance vs. pulse duration plots
 #### Two-pool Cooperative Exocytosis Model 
 Execute script RUN_THIS_FIRST.m, which will produce all figures. <br>
 Make sure you download the MATLAB parallel toolbox. <br>
