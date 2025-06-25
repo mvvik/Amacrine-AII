@@ -2,6 +2,7 @@
 % --- Load global model parameters ----------------------------------------
 
 addpath('../COMMON/');
+mkdir('../DATA');
 CommonParameters;
 
 % --- Simulation call setup -----------------------------------------------
