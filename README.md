@@ -7,5 +7,5 @@ This depository contains code for the following manuscript:
 <sup>3</sup> Casey Eye Institute, Dep. of Ophthalmology, Oregon Health & Science University, Portland, OR 97239 <br>
 <sup>4</sup> Dep. of Chemical Physiology and Biochemistry, Oregon Health & Science University, Portland, OR 97239 <br>
 
-To reproduce individual files, go to individual Figure folders, and follow the instructions in that folder <br>
-Do not execute any code in CALC and COMMON folders
+#### To reproduce all figures, download the whole repository, and follow the instructions in each Figure folder. <br>
+#### Do not execute any code in CALC and COMMON folders.
