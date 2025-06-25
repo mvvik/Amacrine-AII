@@ -1,5 +1,4 @@
-## Amacrine-AII
-This depository contains code for the following manuscript: 
+##### Code for the following manuscript: 
 #### Fast endocytosis at inhibitory synapses is triggered by calmodulin and accelerated by Ca<sup>2+</sup> influx. <br>
 ##### Marc A. Meadows<sup>1</sup>, Victor Matveev<sup>2</sup> and Henrique von Gersdorff <sup>1,3,4</sup><br>
 <sup>1</sup> The Vollum Institute, Oregon Health & Science University, Portland, OR 97239, USA. <br>
