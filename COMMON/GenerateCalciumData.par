@@ -1,0 +1,73 @@
+%
+% Calcium Calculator (CalC) modeling script
+% Generate [Ca2+] data for all figures
+
+verbose = 0       % Silence diagnostic output, for speed
+
+EGTA.total  = $2  % Command-line parameter #1: total EGTA concentration (uM)
+BAPTA.total = $3  % Command-line parameter #2: total BAPTA concentration (uM)
+inactivate  = $4  % Command-line parameter #3: Flag for gradual inactivation of I_Ca
+fName       = $5  % Command-line parameter #4: Filename for [Ca2+] output
+
+%%%%%%%%%%%  Import and/or define main Ca2+ simulation parameters %%%%%%%%%%%%%%%%
+
+include "../COMMON/CommonParameters.m"
+B.kappa = Kappa
+B.KD    = BKD
+B.kplus = Bkplus
+B.D     = BDiff
+B.total = B.kappa * B.KD
+Ca.bgr  = CaBgr
+Ca.D    = 0.22        % Allbritton et al. 1992, um^2/ms 
+uptake  = 1 / CaTau 
+tSteps  = totalTime * 10
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Geometry declarations %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Ca.source 0 0.001
+volume 0 Rpatch
+geometry spherical
+stretch.factor = 1.02
+stretch r 0 0 
+grid nGrid
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Buffer definitions  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+buffer ATP
+ATP.D     = 0.2
+ATP.total = 500
+ATP.kplus = 0.15
+ATP.KD    = 200
+
+buffer B
+
+if EGTA.total > 0
+    buffer EGTA
+    EGTA.D = 0.2    % Naraghi '97 Cell Ca 22:255
+    EGTA.KD = 0.174
+    EGTA.kminus = 0.00047
+endif
+
+if BAPTA.total > 0
+    buffer BAPTA
+    BAPTA.D = 0.2
+    BAPTA.KD = 0.176
+    BAPTA.kminus = 0.079
+endif
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  Simulation protocol  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+run adaptive  totalTime
+
+if inactivate
+	current := ICa (0.7 + 0.3 (0.56 exp(-t/5) + 0.44 exp(-t/100) ) ) pA   
+else
+	current := ICa pA 
+endif
+	
+plot binary Ca fName
+plot.steps.binary = tSteps
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%   The End   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
