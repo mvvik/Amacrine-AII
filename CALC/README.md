@@ -1,2 +1,4 @@
-### These are executables from the CalC project
-See CalC project in <https://github.com/mvvik/CalC-simple-buffer>
+##### These are executables from the CalC project
+Do not directly execute any code in this folder: go directly to Figure folders.<br>
+Executables are used by ComputeCaPDE.m in COMMON folder.<br>
+CalC project information: <https://github.com/mvvik/CalC-simple-buffer>
