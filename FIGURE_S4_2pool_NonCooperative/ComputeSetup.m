@@ -6,7 +6,6 @@
 %   Dist-1 Dist-2 SensorKD SensorKp gamma pool-fraction
 
 addpath('../COMMON/');
-CommonParameters;     % Get common simulation parameters
 ComputeCalciumPDE;
 
 nPars      = 6;       % Number of exocytosis model parameters
