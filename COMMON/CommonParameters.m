@@ -12,5 +12,5 @@ ICa        = 0.2;                   % Ca2+ current (times 2 due to reflection sy
 CaTau0     = 10;                    % Total free Ca2+ clearance rate, 1/ms
 CaTau      = CaTau0 / (1 + Kappa);  % Effective extrusion rate with buffer
 nGrid      = 100;                   % Number of spatial nodes
-nPoints    = 50;                    % Number of time points in simulation to fit to data
+nPoints    = 50;                    % Number of points (Cm vs pulse duration) for model fitting
 LLR_CutOff = 8.0;                   % Log likelihood ratio cut-off
