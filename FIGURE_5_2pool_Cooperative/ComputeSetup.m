@@ -12,17 +12,6 @@ nPars      = 7;       % Number of exocytosis model parameters
 nCaSites   = 5;       % Number of Ca binding sites in exocytosis sensor (2..5)
 DataPrefix = ['Coop_2pool_CaSites', num2str(nCaSites), '_']; 
 
-% --- Generate exocytosis data curve that the model will attempt fitting:
-
-DT                = logspace(log10(0.5), log10(totalTime), nPoints); 
-[DataIn, ErrorIn] = GenerateExocytosisData( DT, 0);
-
-% --- Read computed [Ca2+] vs distance and time, for each buffering condition:
-
-[  ~,    CaGrid1, tArray1] = ReadDataVsTime(fileEGTA2mM );
-[  ~,    CaGrid2, tArray2] = ReadDataVsTime(fileEGTA10mM);
-[rArray, CaGrid3, tArray3] = ReadDataVsTime(fileBAPTA1mM);
-
 % --- Generate fprintf format string for parameter output:
 
 fStr = '';
