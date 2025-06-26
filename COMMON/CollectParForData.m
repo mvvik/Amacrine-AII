@@ -1,4 +1,5 @@
 function ResultsOut = CollectParForData(nPars, DataPrefix)
+% Collect all Likelihood_Profile output for model defined by nPars and DataPrefix
 
 % Get list of files in the data directory
 sls     = ls('../DATA/');
