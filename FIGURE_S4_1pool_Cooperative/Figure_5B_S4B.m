@@ -5,7 +5,7 @@ function Figure_5B_S4B()
 % -------------------------------------------------------------------------
 
 ComputeSetup;
-CollectParForData(nPars, DataPrefix);
+ResultsOut = CollectParForData(nPars, DataPrefix);
 BestError  = 48.3216;  % Smallest error: 2-pool cooperative model with 5 bindings sites
 
 % Parameter labels and units
