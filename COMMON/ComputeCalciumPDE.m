@@ -11,12 +11,12 @@ Script = '  ../COMMON/GenerateCalciumData.par';
 
 if contains(computer, 'WIN')
      prog = ['..\CALC\cwin6107x64.exe ', Script];
+elseif contains(computer('arch'), 'maca64')
+     prog = ['../CALC/cmac6107xM1 '    , Script];
+elseif contains(computer('arch'), 'maci64')
+     prog = ['../CALC/cmac6107x86 '    , Script];
 else
-    if contains(computer('arch'), 'maca64')
-        prog   = ['../CALC/cmac6107xM1 '    , Script];
-    else
-        prog   = ['../CALC/cmac6107x86 '    , Script];
-    end
+     fprintf('Compile CalC first: github.com/mvvik/CalC-simple-buffer');
 end
 
 % --- Output file names for each buffer condition -------------------------
