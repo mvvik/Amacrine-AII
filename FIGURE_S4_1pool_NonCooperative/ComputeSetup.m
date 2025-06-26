@@ -54,5 +54,8 @@ switch nCaSites
 	        Xmax = [  0.033,   7,  0.99,  9000];
 end
 
+Xmin = real( SetParamBounds(Xmin, 1) );  % Enforce parameter bounds
+Xmax = real( SetParamBounds(Xmax, 1) );  % Enforce parameter bounds
+
 maxCost = 350;
 
