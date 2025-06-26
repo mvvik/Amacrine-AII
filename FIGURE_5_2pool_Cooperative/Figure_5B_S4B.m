@@ -5,7 +5,7 @@ function Figure_5B_S4B()
 % -------------------------------------------------------------------------%
 
 ComputeSetup;
-ResultsOut = CollectParForData(nPars);
+CollectParForData(nPars, DataPrefix);
 
 %% Parameter Definitions
 labels = { 'R_X', 'R_Y', 'K_D', 'k_{on}', '\beta', '\gamma', 'Pool_X', 'Pool_Y'};
