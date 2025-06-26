@@ -5,7 +5,7 @@
 clear
 addpath('../COMMON/');
 ComputeSetup;
-ResultsOut = CollectParForData(nPars);
+ResultsOut = CollectParForData(nPars, DataPrefix);
 
 % -------------------------------------------------------------------------
 % Plotting colors and styles
