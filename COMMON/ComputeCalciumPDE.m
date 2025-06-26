@@ -10,7 +10,7 @@ CommonParameters;
 Script = '  ../COMMON/GenerateCalciumData.par';
 
 if contains(computer, 'WIN')
-     ['..\CALC\cwin6107x64.exe ', Script];
+     prog = ['..\CALC\cwin6107x64.exe ', Script];
 else
     if contains(computer('arch'), 'maca64')
         prog   = ['../CALC/cmac6107xM1 '    , Script];
