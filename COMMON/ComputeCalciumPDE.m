@@ -10,7 +10,7 @@ CommonParameters;
 Script = '  ../COMMON/GenerateCalciumData.par';
 
 if contains(computer, 'WIN')
-    prog = ['..\CALC\cwin6107x64.exe ', Script];
+     ['..\CALC\cwin6107x64.exe ', Script];
 else
     if contains(computer('arch'), 'maca64')
         prog   = ['../CALC/cmac6107xM1 '    , Script];
@@ -54,5 +54,16 @@ if numel(Y1) + numel(Y2) + numel(Y3) + numel(Y4) + numel(Y5) + numel(Y6) + numel
 else
     fprintf("*** CalC data generated successfully ***\n");
 end
+
+% --- Generate exocytosis data curve that the model will attempt fitting:
+
+DT                = logspace(log10(0.5), log10(totalTime), nPoints); 
+[DataIn, ErrorIn] = GenerateExocytosisData( DT, 0);
+
+% --- Read computed [Ca2+] vs distance and time, for each buffering condition:
+
+[  ~,    CaGrid1, tArray1] = ReadDataVsTime(fileEGTA2mM );
+[  ~,    CaGrid2, tArray2] = ReadDataVsTime(fileEGTA10mM);
+[rArray, CaGrid3, tArray3] = ReadDataVsTime(fileBAPTA1mM);
 
 % ================================ END ====================================
