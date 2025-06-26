@@ -6,7 +6,6 @@
 %    R1  SCaKD1  SCakp1 coop gamma
 
 addpath('../COMMON/');
-CommonParameters;     % Get common simulation parameters
 ComputeCalciumPDE;
 
 nPars      = 5;       % Number of exocytosis model parameters
