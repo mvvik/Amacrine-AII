@@ -53,8 +53,8 @@ switch nCaSites
         Xmax = [ 0.048  0.092  1.3   0.99  0.30  4.0  0.75];
 end
 
-Xmin = real( SetParamBounds(Xmin, 1) );  % Enforce parameter bounds
-Xmax = real( SetParamBounds(Xmax, 1) );  % Enforce parameter bounds
+Xmin = real( SetParamBounds(Xmin, 1) );  % Invert bound-clipping to ensure the whole range is covered
+Xmax = real( SetParamBounds(Xmax, 1) );  % Invert bound-clipping to ensure the whole range is covered
 
 % -- Desired initial model error before optimization:
 maxCost  = 150;
