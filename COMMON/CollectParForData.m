@@ -1,6 +1,4 @@
-function ResultsOut = CollectParForData(nPars)
-% Load and aggregate simulation output data files
-ComputeSetup;
+function ResultsOut = CollectParForData(nPars, DataPrefix)
 
 % Get list of files in the data directory
 sls     = ls('../DATA/');
