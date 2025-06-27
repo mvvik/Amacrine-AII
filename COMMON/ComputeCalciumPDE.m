@@ -11,8 +11,10 @@ Script = '  ../COMMON/GenerateCalciumData.par';
 if contains(computer, 'WIN')
      prog = ['..\CALC\cwin6107x64.exe ', Script];
 elseif contains(computer('arch'), 'maca64')
+     system('chmod +x ../CALC/cmac6107xM1');
      prog = ['../CALC/cmac6107xM1 '    , Script];
 elseif contains(computer('arch'), 'maci64')
+     system('chmod +x ../CALC/cmac6107x86');
      prog = ['../CALC/cmac6107x86 '    , Script];
 else
      fprintf('Do not recognize this architecture: %s\n', computer('arch'));
