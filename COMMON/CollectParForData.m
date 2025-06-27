@@ -1,19 +1,25 @@
 function ResultsOut = CollectParForData(nPars, DataPrefix)
 % Collect all Likelihood_Profile output for model defined by nPars and DataPrefix
 
-% Get list of files in the data directory
-sls     = ls('../DATA/');
+dataDir = '../DATA/';
+
+% Get list of all .mat files in the directory
+files = dir(fullfile(dataDir, '*.mat'));
 Results = [];
 
-% Loop through all entries and collect matching data
-for jj = 1 : size(sls,1)
-       if contains(sls(jj,:), DataPrefix ) &&  contains(sls(jj,:), '.mat' ) 
-         OutName = ['../DATA/', sls(jj,:)];
-         ResultsOut = [];
-         load(OutName, 'ResultsOut');
-         fprintf('Processing file %s: \n  %d data points\n', sls(jj,:), size(ResultsOut,1));
-         Results = cat(1, Results, ResultsOut);
-       end
+% Loop through all files
+for jj = 1:length(files)
+    fileName = files(jj).name;
+
+    % Check for prefix match
+    if contains(fileName, DataPrefix)
+        OutName = fullfile(dataDir, fileName);
+        ResultsOut = [];
+        load(OutName, 'ResultsOut');
+
+        fprintf('Processing file %s:\n  %d data points\n', fileName, size(ResultsOut, 1));
+        Results = cat(1, Results, ResultsOut);
+    end
 end
    
 % Sort results by the last column and filter out non-positive entries
