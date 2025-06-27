@@ -2,11 +2,6 @@
 %  Likelihood maximization / Parameter profiling for Figures 5B and S4B
 % -------------------------------------------------------------------------
 
-clear;
-ComputeSetup;
-
-% --- Settings for the parameter profiling run
-
 nPass   = 4;        	 % Number of profiling passes
 nBins   = 36;       	 % Number of slices per parameter (integer times parallel workers)
 nTotal  = nPars * nBins; % Number of parameter combinations per single pass
