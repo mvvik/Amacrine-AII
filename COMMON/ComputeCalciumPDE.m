@@ -13,8 +13,8 @@ elseif contains(computer('arch'), 'maca64')
      system('chmod +x ../CALC/cmac6107xM1');
      prog = '../CALC/cmac6107xM1 ';
 elseif contains(computer('arch'), 'maci64')
-     system('chmod +x ../CALC/cmac7107x86');
-     prog = '../CALC/cmac7108x86 ';
+     system('chmod +x ../CALC/cmac6107x86');
+     prog = '../CALC/cmac6107x86 ';
 else
      fprintf('Do not recognize this architecture: %s\n', computer('arch'));
      fprintf('Compile CalC first: github.com/mvvik/CalC-simple-buffer');
