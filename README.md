@@ -10,6 +10,6 @@
 #### Do not directly execute any code in CALC and COMMON folders.
 
 #### Note to Mac users:
-The CalC code may fail to execute due to security settings. In this case, do the following:<br>
+The CalC code may fail to execute due to security settings. If this happens, do the following:<br>
 System Settings -> Privacy and Security -> scroll to Security -> allow cmac6107x86 or cmac6107xM1<br>
 Alternatively, compile the source code from <github.com/mvvik/CalC-simple-buffer>
