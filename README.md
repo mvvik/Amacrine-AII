@@ -11,5 +11,5 @@
 
 #### Note to Mac users:
 macOS may block CalC execution due to security settings. If this happens, do the following:<br>
-System Settings -> Privacy and Security -> scroll to Security -> allow cmac6107x86 or cmac6107xM1<br>
-Alternatively, compile the source code from <github.com/mvvik/CalC-simple-buffer>
+System Settings &#8594; Privacy and Security &#8594; scroll to Security &#8594; allow cmac6107x86 or cmac6107xM1<br>
+Alternatively, you can compile the [source code](github.com/mvvik/CalC-simple-buffer).
