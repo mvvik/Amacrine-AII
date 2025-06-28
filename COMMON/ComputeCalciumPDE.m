@@ -7,21 +7,24 @@ CommonParameters;
 
 % --- Simulation call setup -----------------------------------------------
 
+CalC_version = '6107';
+Script = ' ../COMMON/GenerateCalciumData.par';
+
 if contains(computer, 'WIN')
-     prog = '..\CALC\cwin6107x64.exe ';
+     prog = ['..\CALC\cwin', CalC_version, 'x64.exe '];
 elseif contains(computer('arch'), 'maca64')
-     system('chmod +x ../CALC/cmac6107xM1');
-     prog = '../CALC/cmac6107xM1 ';
+     prog = ['../CALC/cmac', CalC_version, 'xM1 '];
+     system(['chmod +x ', prog]);
 elseif contains(computer('arch'), 'maci64')
-     system('chmod +x ../CALC/cmac6107x86');
-     prog = '../CALC/cmac6107x86 ';
+     prog = ['../CALC/cmac', CalC_version, 'x86 '];
+     system(['chmod +x ', prog]);
 else
      fprintf('Do not recognize this architecture: %s\n', computer('arch'));
      fprintf('Compile CalC first: github.com/mvvik/CalC-simple-buffer');
      return;
 end
 
-prog = [ prog, ' ../COMMON/GenerateCalciumData.par'];
+prog = [ prog, Script];
 
 % --- Output file names for each buffer condition -------------------------
 
