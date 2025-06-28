@@ -9,7 +9,6 @@
 #### To reproduce all figures, download the whole repository, and follow the instructions in each Figure folder. <br>
 #### Do not directly execute any code in CALC and COMMON folders.
 
-#### Note to Mac users:
-macOS may block CalC execution due to security settings. If this happens, do the following:<br>
+*Note to Mac users:* macOS may block CalC execution due to security settings. If this happens, do the following:<br>
 System Settings &#8594; Privacy and Security &#8594; scroll down to Security &#8594; allow cmac6107x86 or cmac6107xM1<br>
 Alternatively, you can compile the [source code](https://github.com/mvvik/CalC-simple-buffer).
