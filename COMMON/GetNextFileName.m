@@ -1,21 +1,27 @@
 function outName = GetNextFileName( prefix )
 % Create another file name with given prefix, by adding an integer index
 
-    sls  = ls('../DATA/');
-    ind  = 1;
-    flag = 1;
+% Define directory and initialize index
+dataDir = '../DATA/';
+ind     = 1;
+flag    = true;
 
-    while flag
-        flag = 0;
-        for jj = 1 : size(sls,1)
-           if contains(sls(jj,:), [prefix, num2str(ind), '.mat'] )
-             flag = 1;
-             ind  = ind + 1;
-             break;
-           end
-        end
+% Get list of all .mat files
+fileList = dir(fullfile(dataDir, '*.mat'));
+
+% Extract only file names
+fileNames = {fileList.name};
+
+% Loop until an unused filename is found
+while flag
+    candidate = [prefix, num2str(ind), '.mat'];
+    if any(strcmp(candidate, fileNames))
+        ind = ind + 1;
+    else
+        flag = false;
     end
-    
-    outName = ['../DATA/', prefix, num2str(ind) ,'.mat'];
-    fprintf('Next file: %s\n', outName)
 end
+
+% Construct the output file name
+outName = fullfile(dataDir, [prefix, num2str(ind), '.mat']);
+fprintf('Next file: %s\n', outName);
