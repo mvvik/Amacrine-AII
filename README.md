@@ -8,3 +8,6 @@
 
 #### To reproduce all figures, download the whole repository, and follow the instructions in each Figure folder. <br>
 #### Do not directly execute any code in CALC and COMMON folders.
+
+##### Note to Mac users: the CalC code may fail to execute due to security settings. In this case, di the following:
+##### System Settings -> Privacy and Security -> Scroll to Security -> allow cmac6107x86 or cmac6107xM1
