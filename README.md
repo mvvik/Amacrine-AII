@@ -6,8 +6,7 @@
 <sup>3</sup> Casey Eye Institute, Dep. of Ophthalmology, Oregon Health & Science University, Portland, OR 97239 <br>
 <sup>4</sup> Dep. of Chemical Physiology and Biochemistry, Oregon Health & Science University, Portland, OR 97239 <br>
 
-#### To reproduce all figures, download the repository, and follow the instructions in each Figure folder. <br>
-#### Do not directly execute any code in CALC and COMMON folders.
+#### To reproduce all figures, download the repository, and follow the instructions in each Figure folder. Do not directly execute any code in CALC and COMMON folders.
 
 **Note to Mac users:** macOS may block CalC execution due to security settings. If this happens, do the following:<br>
 System Settings &#8594; Privacy and Security &#8594; scroll down to Security &#8594; allow <code>cmac6107x86</code> or <code>cmac6107xM1</code><br>
