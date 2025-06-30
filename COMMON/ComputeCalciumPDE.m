@@ -54,7 +54,8 @@ try
     if ~isfile(fileBAPTA1mM_ICa) [~, Y7] = system( [ prog, ' ', num2str([0,  1e3, 0]), ' ', fileBAPTA1mM_ICa]); end % BAPTA 1mM, const ICa
 catch ERR
     if contains(computer('arch'), 'maca')
-        fprintf('Give permissions to the CALC exectuable in settings\n');
+        fprintf('Give permissions to the CALC executable in settings:\n');
+        fprintf(['Control Settings -> Privacy and Security -> allow cmac', CalCversion, '\n']);
         system('open \"x-apple.systempreferences:com.apple.preference.securoty?Privacy\"');
     end
     fprintf('Error in executing CalC code: %s\n%s\n', prog, ERR);
