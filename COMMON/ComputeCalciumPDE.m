@@ -55,7 +55,7 @@ try
 catch ERR
     if contains(computer('arch'), 'maca')
         fprintf('Give permissions to the CALC executable in settings:\n');
-        fprintf(['Control Settings -> Privacy and Security -> allow cmac', CalCversion, '\n']);
+        fprintf('Control Settings -> Privacy and Security -> allow cmac%s \n', CalCversion);
         system('open \"x-apple.systempreferences:com.apple.preference.securoty?Privacy\"');
     end
     fprintf('Error in executing CalC code: %s\n%s\n', prog, ERR);
