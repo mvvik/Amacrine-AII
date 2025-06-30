@@ -50,6 +50,7 @@ if outCode == 137 && contains(computer('arch'), 'mac')
     fprintf('Allow cmac%s in macOS privacy settings:\n', CalC_version);
     system('open /System/Library/PreferencePanes/Security.prefPane');
     fprintf('Control Settings -> Privacy and Security -> Security -> Allow anyway cmac%s \n', CalC_version);
+    return;
 end
 
 if ~isfile(fileEGTA2mM)      [~, Y2] = system( [ prog, ' ', num2str([2e3,  0, 1]), ' ', fileEGTA2mM  ]); end % Generate Ca2+ with EGTA  = 2mM
