@@ -43,24 +43,22 @@ fileBAPTA1mM_ICa = '../DATA/CaBAPTA1mM_constICa';
 
 Y1 = ''; Y2 = ''; Y3 = ''; Y4 = ''; Y5 = ''; Y6 = ''; Y7 = '';
 
-try
-    if ~isfile(fileControl)      [~, Y1] = system( [ prog, ' ', num2str([0,    0, 1]), ' ', fileControl  ]); end % Generate control data
-    if ~isfile(fileEGTA2mM)      [~, Y2] = system( [ prog, ' ', num2str([2e3,  0, 1]), ' ', fileEGTA2mM  ]); end % Generate Ca2+ with EGTA  = 2mM
-    if ~isfile(fileEGTA10mM)     [~, Y3] = system( [ prog, ' ', num2str([1e4,  0, 1]), ' ', fileEGTA10mM ]); end % Generate Ca2+ with EGTA  = 10mM
-    if ~isfile(fileBAPTA1mM)     [~, Y4] = system( [ prog, ' ', num2str([0,  1e3, 1]), ' ', fileBAPTA1mM ]); end % Generate Ca2+ with BAPTA = 1mM
-    
-    if ~isfile(fileEGTA2mM_ICa)  [~, Y5] = system( [ prog, ' ', num2str([2e3,  0, 0]), ' ', fileEGTA2mM_ICa ]); end % EGTA 2mM, const ICa
-    if ~isfile(fileEGTA10mM_ICa) [~, Y6] = system( [ prog, ' ', num2str([1e4,  0, 0]), ' ', fileEGTA10mM_ICa]); end % EGTA 10mM, const ICa
-    if ~isfile(fileBAPTA1mM_ICa) [~, Y7] = system( [ prog, ' ', num2str([0,  1e3, 0]), ' ', fileBAPTA1mM_ICa]); end % BAPTA 1mM, const ICa
-catch ERR
-    if contains(computer('arch'), 'maca')
-        fprintf('Give permissions to the CALC executable in settings:\n');
-        fprintf('Control Settings -> Privacy and Security -> allow cmac%s \n', CalCversion);
-        system('open \"x-apple.systempreferences:com.apple.preference.securoty?Privacy\"');
-    end
-    fprintf('Error in executing CalC code: %s\n%s\n', prog, ERR);
-    return;
+
+if ~isfile(fileControl)      [~, Y1] = system( [ prog, ' ', num2str([0,    0, 1]), ' ', fileControl  ]); end % Generate control data
+
+if X == 137 && contains(computer('arch'), 'mac')
+    fprintf('Allow cmac%s in macOS privacy settings:\n', CalC_version);
+    system('open /System/Library/PreferencePanes/Security.prefPane');
+    fprintf('Control Settings -> Privacy and Security -> Security -> Allow anyway cmac%s \n', CalC_version);
 end
+
+if ~isfile(fileEGTA2mM)      [~, Y2] = system( [ prog, ' ', num2str([2e3,  0, 1]), ' ', fileEGTA2mM  ]); end % Generate Ca2+ with EGTA  = 2mM
+if ~isfile(fileEGTA10mM)     [~, Y3] = system( [ prog, ' ', num2str([1e4,  0, 1]), ' ', fileEGTA10mM ]); end % Generate Ca2+ with EGTA  = 10mM
+if ~isfile(fileBAPTA1mM)     [~, Y4] = system( [ prog, ' ', num2str([0,  1e3, 1]), ' ', fileBAPTA1mM ]); end % Generate Ca2+ with BAPTA = 1mM
+
+if ~isfile(fileEGTA2mM_ICa)  [~, Y5] = system( [ prog, ' ', num2str([2e3,  0, 0]), ' ', fileEGTA2mM_ICa ]); end % EGTA 2mM, const ICa
+if ~isfile(fileEGTA10mM_ICa) [~, Y6] = system( [ prog, ' ', num2str([1e4,  0, 0]), ' ', fileEGTA10mM_ICa]); end % EGTA 10mM, const ICa
+if ~isfile(fileBAPTA1mM_ICa) [~, Y7] = system( [ prog, ' ', num2str([0,  1e3, 0]), ' ', fileBAPTA1mM_ICa]); end % BAPTA 1mM, const ICa
 
 % --- Error message if CalC simulation failed -----------------------------
 
