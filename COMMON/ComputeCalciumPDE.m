@@ -43,14 +43,13 @@ fileBAPTA1mM_ICa = '../DATA/CaBAPTA1mM_constICa';
 
 Y1 = ''; Y2 = ''; Y3 = ''; Y4 = ''; Y5 = ''; Y6 = ''; Y7 = '';
 
+outCode = 0;
+if ~isfile(fileControl) [outCode, Y1] = system( [ prog, ' ', num2str([0,    0, 1]), ' ', fileControl  ]); end % Generate control data
 
-if ~isfile(fileControl)      [~, Y1] = system( [ prog, ' ', num2str([0,    0, 1]), ' ', fileControl  ]); end % Generate control data
-
-if X == 137 && contains(computer('arch'), 'mac')
+if outCode == 137 && contains(computer('arch'), 'mac')
     fprintf('Allow cmac%s in macOS privacy settings:\n', CalC_version);
     system('open /System/Library/PreferencePanes/Security.prefPane');
     fprintf('Control Settings -> Privacy and Security -> Security -> Allow anyway cmac%s \n', CalC_version);
-    return;
 end
 
 if ~isfile(fileEGTA2mM)      [~, Y2] = system( [ prog, ' ', num2str([2e3,  0, 1]), ' ', fileEGTA2mM  ]); end % Generate Ca2+ with EGTA  = 2mM
@@ -63,7 +62,7 @@ if ~isfile(fileBAPTA1mM_ICa) [~, Y7] = system( [ prog, ' ', num2str([0,  1e3, 0]
 
 % --- Error message if CalC simulation failed -----------------------------
 
-if X + numel(Y1) + numel(Y2) + numel(Y3) + numel(Y4) + numel(Y5) + numel(Y6) + numel(Y7) > 0
+if outCode + numel(Y1) + numel(Y2) + numel(Y3) + numel(Y4) + numel(Y5) + numel(Y6) + numel(Y7) > 0
     fprintf(" %s\n %s\n %s\n %s\n %s\n %s\n %s\n\n", Y1, Y2, Y3, Y4, Y5, Y6, Y7);
     fprintf("Error computing [Ca2+] using CalC: check README instructions\n");
     return;
