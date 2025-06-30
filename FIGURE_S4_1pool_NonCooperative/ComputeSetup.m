@@ -42,8 +42,8 @@ switch nCaSites
 		Xmax = [  0.033,   7,  0.99,  9000];
 end
 
-Xmin = real( SetParamBounds(Xmin, 1) );  % Invert bound-clipping to ensure the whole range is covered
-Xmax = real( SetParamBounds(Xmax, 1) );  % Invert bound-clipping to ensure the whole range is covered
+Xmin = real( SetParamBounds(Xmin, 1) );  % Invert bound-clipping to ensure entire range is covered
+Xmax = real( SetParamBounds(Xmax, 1) );  % Invert bound-clipping to ensure entire range is covered
 
 maxCost = 350;
 
