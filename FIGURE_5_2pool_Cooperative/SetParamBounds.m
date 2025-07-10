@@ -1,6 +1,5 @@
 function Y = SetParamBounds(X, invFlag)
-%
-% "Soft" clipping to upper and lower bounds on parameter values:
+% - "Soft" clipping to upper and lower bounds on parameter values:
 % ----------------------------------------------------------------
 %       X: Parameter array
 % invFlag: flag for forward vs. backward "soft-clipping" transform
@@ -26,9 +25,7 @@ else
     Y = SoftMin(Y, ParamMin, @atanh );
 end
 
-Y = abs(Y);
-[ii, jj] = find(isnan(Y) | isinf(Y) | abs(imag(Y)) );
-
+[ii, jj] = find(isnan(Y) | isinf(Y) | abs(imag(Y)) | real(Y) < 0 );
 for kk = 1 : numel(ii)
     Y(ii(kk),jj(kk)) = 0.5*(ParamMin(jj(kk))+ParamMax(jj(kk)));
 end
