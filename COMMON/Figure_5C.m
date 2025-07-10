@@ -3,6 +3,11 @@
 % -------------------------------------------------------------------------
 
 clear
+if contains(pwd,'COMMON')
+    fprintf('Do not execute scripts in this folder (switch to a Figure folder)\n');
+    return;
+end
+
 addpath('../COMMON/');
 ComputeSetup;
 ResultsOut = CollectParForData(nPars, DataPrefix);

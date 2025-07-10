@@ -1,5 +1,5 @@
 function ResultsOut = CollectParForData(nPars, DataPrefix)
-% Collect all Likelihood_Profile output for model defined by nPars and DataPrefix
+% Load and aggregate simulation output data files
 
 dataDir = '../DATA/';
 
@@ -22,6 +22,11 @@ for jj = 1:length(files)
     end
 end
    
+if numel(Results) == 0
+    fprintf("No data yet for model %s: run Likelihood_Profile first\n", DataPrefix);
+    return;
+end
+
 % Sort results by the last column and filter out non-positive entries
 [~, I]   = sort(Results(:,end));
 ind0     = find(Results(I,end) > 0, 1);

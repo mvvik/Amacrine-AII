@@ -25,7 +25,7 @@ function ModelOutput = GetModelOutput3( EQ, CaGrid, timeArray, rArray, X, DT, od
     coop  = X(nSites + 3) * coopFlag + ~coopFlag;   % Sensor Ca2+ binding cooperativity ("beta")
     gamma = X(nSites + 3 + coopFlag);               % Sensor final transition
     km    = KD * kp;                                % Sensor unbinding rate
-    kp1   = 3*kp;     kp2 = 2*kp;  kp3 = kp         % Binding rates of individual stages
+    kp1   = 3*kp;     kp2 = 2*kp;  kp3 = kp;        % Binding rates of individual stages
     km1   = km/coop;  km2 = 2*km;  km3 = 3*km*coop; % Unbinding rates of individual stages
 
 	ModelOutput = zeros( size( DT ) );
