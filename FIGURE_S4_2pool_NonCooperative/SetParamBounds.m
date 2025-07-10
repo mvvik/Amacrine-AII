@@ -1,11 +1,10 @@
 function Y = SetParamBounds(X, invFlag)
 %
 % "Soft" clipping to upper and lower bounds on parameter values:
-% ------------------------------------------------------------------
+% ----------------------------------------------------------------
 %       X: Parameter array
-%  Rpatch: physical domain size (limiting the 1st two parameters)
 % invFlag: flag for forward vs. backward "soft-clipping" transform
-% ------------------------------------------------------------------
+% -----------------------------------------------------------------
 % 2-pool non-cooperative exocytosis sensor parameters:
 %      1      2      3        4       5    6       
 %   Dist-1 Dist-2 SensorKD SensorKp gamma pool-fraction
