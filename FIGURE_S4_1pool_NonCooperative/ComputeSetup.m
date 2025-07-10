@@ -25,24 +25,24 @@ GetModel = str2func( strcat('@GetModelOutput',         num2str(nCaSites)) );
 GetEquil = str2func( strcat('@(X) getEquilibriumCoop', num2str(nCaSites), '(X(2), 1)') );
 CostFunc = @(X) CostFunction(GetModel, GetEquil, X, tArray1, tArray2, tArray3, CaGrid1, CaGrid2, CaGrid3, DataIn, ErrorIn, rArray, DT);
 
-% -- Parameter windows to scan and initial model error before optimization:
+% -- Parameter windows to scan and initial error target before optimization:
 
 switch nCaSites
         case 2
             Xmin = [  0.04,  0.4,  0.45,    1];
-	        Xmax = [  0.07,    4,  0.99,   10];
+	    Xmax = [  0.07,    4,  0.99,   10];
             maxCost = 180;
         case 3
             Xmin = [  0.030,  1,   0.4,     1];
-	        Xmax = [  0.055,  6,  0.99,   200];
+	    Xmax = [  0.055,  6,  0.99,   200];
             maxCost = 165;
         case 4
             Xmin = [  0.025,  1,   0.3,    2.5];
-	        Xmax = [  0.045,  7,  0.99,   9000];
+	    Xmax = [  0.045,  7,  0.99,   9000];
             maxCost = 155;
         case 5
             Xmin = [  0.023,   1,   0.3,  3.5];
-	        Xmax = [  0.033,   7,  0.99,  9000];
+	    Xmax = [  0.033,   7,  0.99,  9000];
             maxCost = 150;
 end
 
