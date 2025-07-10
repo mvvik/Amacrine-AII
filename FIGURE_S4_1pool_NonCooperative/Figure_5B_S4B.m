@@ -6,9 +6,14 @@ function Figure_5B_S4B()
 
 ComputeSetup;
 ResultsOut = CollectParForData(nPars, DataPrefix);
+if numel(ResultsOut) == 0
+    fprintf("No data yet for model %s: run Likelihood_Profile first\n", DataPrefix);
+    return;
+end
+
 BestError  = 48.3216;  % Smallest error: 2-pool cooperative model with 5 bindings sites
 
-% -------------------- Parameter Definitions
+% --  Parameter Definitions
 labels = { 'R_X', 'K_D',    'k_{on}',     '\gamma' };
 Units  = { 'nm',  '\muM', '(μM ms)^{-1}', 'ms^{-1}'}; 
 Order  = [1 2 3 4];    % Reordering of parameters for plotting
@@ -21,7 +26,7 @@ tfs    = 12;
 indGamma = nPars;     % Gamma parameter index (after augmentation)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Preprocess and filter results
+% --  Preprocess and filter results
 
 % Rescale first parameter to nm, apply parameter bounds
 ResultsOut(:, 1:nPars) = SetParamBounds(ResultsOut(:, 1:nPars), 0);
@@ -46,7 +51,7 @@ ResultsOut(:, 1:nPars) = ResultsOut(:, Order);
 ParMin                 = ParMin(Order);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Profile likelihood plots for each parameter
+% --  Profile likelihood plots for each parameter
 
 figure;
 
@@ -103,7 +108,7 @@ for indPar = 1:nPars
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Add vertical lines and axis formatting
+% --  Add vertical lines and axis formatting
 
 for nn = 1:nPars
     subplot(nRows, nCols, nn);
