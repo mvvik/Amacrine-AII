@@ -25,7 +25,7 @@ GetModel = str2func( strcat('@GetModelOutput',         num2str(nCaSites)) );
 GetEquil = str2func( strcat('@(X) getEquilibriumCoop', num2str(nCaSites), '(X(3), X(5))') );
 CostFunc = @(X) CostFunction(GetModel, GetEquil, X, tArray1, tArray2, tArray3, CaGrid1, CaGrid2, CaGrid3, DataIn, ErrorIn, rArray, DT);
 
-% -- Parameter windows to scan and initial model error before optimization:
+% -- Parameter windows to scan and initial error target before optimization:
 
 switch nCaSites
     case 5
