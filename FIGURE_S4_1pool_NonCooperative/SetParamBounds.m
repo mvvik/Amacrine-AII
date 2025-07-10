@@ -9,11 +9,11 @@ function Y = SetParamBounds(X, invFlag)
 %     1     2       3     4    
 %    R1  SCaKD1  SCakp1 gamma   
     
-Rpatch   = 0.25;  % Simulation domain radius
+Rpatch = 0.25;      % Simulation domain radius
+Y      = abs( X );  % Discard negative signs on parameters
+
 ParamMin = [   0.003,   0.05,  0.001,  0.001];
 ParamMax = [  Rpatch,    100,      1,    100];
-
-Y = abs( X );
 
 SoftMin  = @(x, xMin, g) xMin ./ g(xMin ./ x);
 SoftMax  = @(x, xMax, g) xMax .* g(x ./ xMax);
