@@ -6,6 +6,10 @@ function Figure_5B_S4B()
 
 ComputeSetup;
 ResultsOut = CollectParForData(nPars, DataPrefix);
+if numel(ResultsOut) == 0
+    fprintf("No data yet for model %s: run Likelihood_Profile first\n", DataPrefix);
+    return;
+end
 BestError  = 48.3216;  % Smallest error: 2-pool cooperative model with 5 bindings sites
 
 % Parameter labels and units

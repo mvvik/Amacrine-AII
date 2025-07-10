@@ -27,8 +27,11 @@ else
     Y = SoftMin(Y, ParamMin, @atanh );
 end
 
-Y           = abs(Y);
-Y(isnan(Y)) = ParamMin(isnan(Y));
+Y = abs(Y);
+[ii, jj] = find(isnan(Y) | isinf(Y) | abs(imag(Y)) );
 
+for kk = 1 : numel(ii)
+    Y(ii(kk),jj(kk)) = 0.5*(ParamMin(jj(kk))+ParamMax(jj(kk)));
+end
 
 
