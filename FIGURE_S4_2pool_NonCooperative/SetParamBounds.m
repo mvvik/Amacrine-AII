@@ -9,11 +9,11 @@ function Y = SetParamBounds(X, invFlag)
 %      1      2      3        4       5    6       
 %   Dist-1 Dist-2 SensorKD SensorKp gamma pool-fraction
 
-Rpatch   = 0.25;  % Simulation domain radius
+Rpatch = 0.25;      % Simulation domain radius
+Y      = abs( X );  % Discard negative signs on parameters
+
 ParamMin = [  0.003, 0.003,   0.05, 0.001,  0.001, 0.01];
 ParamMax = [ Rpatch, Rpatch,   100,     1,    100, 0.99];
-
-Y = abs( X );
 
 SoftMin  = @(x, xMin, g) xMin ./ g(xMin ./ x);
 SoftMax  = @(x, xMax, g) xMax .* g(x ./ xMax);
