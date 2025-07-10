@@ -6,6 +6,10 @@ function Figure_5B_S4B()
 
 ComputeSetup;
 ResultsOut = CollectParForData(nPars, DataPrefix);
+if numel(ResultsOut) == 0
+    fprintf("No data yet for model %s: run Likelihood_Profile first\n", DataPrefix);
+    return;
+end
 
 %% Parameter Definitions
 labels = { 'R_X', 'R_Y', 'K_D', 'k_{on}', '\beta', '\gamma', 'Pool_X', 'Pool_Y'};
@@ -109,7 +113,7 @@ for mm = 0 : 6
    ind2 = find(ResultsOut(ind1, 1) <  22 + mm*2); 
    inds = ind1(ind2);
    clrG = (0.9 - mm/10);  clrR  = 1 - clrG;  clr = [ clrR, clrG, 0 ];
-   sz   = (9 - mm)/8;
+   sz   = 2; 
 
     for nn = [1 5] %1 : nPars 
         subplot(nRows, nCols, nn); hold on;
@@ -126,7 +130,7 @@ for mm = 1 : 6
    ind2 = find(ResultsOut(ind1, 6) <  (mm + 4)/10);
    inds = ind1(ind2);
    clrB = (0.9 - mm/10);  clrR  = 1 - clrB;  clr = [ clrR, 0, clrB ];
-   sz   = (9 - mm)/8;
+   sz   = 2; 
 
     for nn = [6 8] %1 : nPars 
         subplot(nRows, nCols, nn); hold on;
@@ -136,7 +140,6 @@ for mm = 1 : 6
         end
     end
 end
-
 
 %% Add vertical lines and titles to each subplot
 for nn = 1:nPars

@@ -11,7 +11,7 @@ function Y = SetParamBounds(X, invFlag)
 %   Dist-1 Dist-2 SensorKD SensorKp coop gamma pool-fraction
 
 Rpatch   = 0.25;  % Simulation domain radius
-ParamMin = [  0.003, 0.003,   0.05,  0.001,  1e-8, 0.001, 0.01];
+ParamMin = [  0.003, 0.003,   0.05,  0.001,  1e-5, 0.001, 0.01];
 ParamMax = [ Rpatch, Rpatch,   100,      1,     2,   100, 0.99];
 
 Y = abs( X );
@@ -27,8 +27,11 @@ else
     Y = SoftMin(Y, ParamMin, @atanh );
 end
 
-Y           = abs(Y);
-Y(isnan(Y)) = ParamMin(isnan(Y));
+Y = abs(Y);
+[ii, jj] = find(isnan(Y) | isinf(Y) | abs(imag(Y)) );
 
+for kk = 1 : numel(ii)
+    Y(ii(kk),jj(kk)) = 0.5*(ParamMin(jj(kk))+ParamMax(jj(kk)));
+end
 
 
