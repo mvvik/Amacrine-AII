@@ -12,7 +12,6 @@ function Y = SetParamBounds(X, invFlag)
 Rpatch = 0.25;      % Simulation domain radius
 Y      = abs( X );  % Discard negative signs on parameters
 
-Rpatch   = 0.25;  % Simulation domain radius
 ParamMin = [  0.003, 0.003,   0.05,  0.001,  1e-5, 0.001, 0.01];
 ParamMax = [ Rpatch, Rpatch,   100,      1,     2,   100, 0.99];
 
