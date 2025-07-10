@@ -4,7 +4,6 @@
 %  Note: algorithm could be optimized by sharing information between passes
 % -------------------------------------------------------------------------
 
-clear
 if contains(pwd,'COMMON')
     fprintf('Do not execute scripts in this folder (switch to a Figure folder)\n');
     return;
