@@ -86,7 +86,7 @@ for indPass = 1:nPass
 		         indPass, indPar, min(Results(indPar,:,end)));
     end
 
-    % Reshape and save results; vosualize parameter profile
+    % Reshape and save results; visualize parameter profile
     ResultsOut = reshape(Results, nTotal, nPars + 1);
     SaveParForData(ResultsOut, nPars, OutName);
     Figure_5B_S4B;
