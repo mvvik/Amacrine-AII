@@ -34,7 +34,7 @@ ParMin       = ResultsOut(Imin, 1:nPars);
 fprintf('Minimal model exocytosis error (across all EGTA and BAPTA conditions): %g \n', Vmin);
 fprintf([' Best-fit parameters = ', fStr, '\n'], ParMin);
 
-MaxError           = Vmin + LLR_CutOff;
+MaxError           = Vmin + LLR_CutOff + 1;
 ResultsOut         = ResultsOut(ResultsOut(:,end) <= MaxError, :);
 ResultsOut(:, end) = ResultsOut(:,end) - Vmin;
 nData              = size(ResultsOut, 1);
@@ -108,37 +108,56 @@ for indPar = 1:nPars
 end
 
 %% Overlay stratified samples by R_X (distance)
-for mm = 0 : 6
-   ind1 = find(ResultsOut(:,    1) >= 20 + mm*2);
-   ind2 = find(ResultsOut(ind1, 1) <  22 + mm*2); 
-   inds = ind1(ind2);
-   clrG = (0.9 - mm/10);  clrR  = 1 - clrG;  clr = [ clrR, clrG, 0 ];
-   sz   = 2; 
+for mm = 0 : 2 : 26
+   clrG = (0.9 - mm/40);  clrR  = 1 - clrG;  clr = [ clrR, clrG, 0 ];
 
-    for nn = [1 5] %1 : nPars 
-        subplot(nRows, nCols, nn); hold on;
-        for ii = 1 : numel(inds)
-            XX = ResultsOut(inds(ii),nn); YY = ResultsOut(inds(ii),end);
-            plot([XX XX], [YY LLR_CutOff], '-' , 'color', clr, 'linewidth', sz);
-        end
-    end
+   val0  = 19 + mm/2;
+   val1  = 20 + mm/2;
+   val2  = 21 + mm/2;
+   inds1 = find(ResultsOut(:, 1) >= val0 & ResultsOut(:, 1) < val1 );
+   inds2 = find(ResultsOut(:, 1) >= val1 & ResultsOut(:, 1) < val2 );
+   [~, ind1] = min(ResultsOut(inds1,end));
+   [~, ind2] = min(ResultsOut(inds2,end));
+   Y1 = ResultsOut(inds1(ind1), end);
+   Y2 = ResultsOut(inds2(ind2), end);
+   X1 = ResultsOut(inds1(ind1), 1);
+   X2 = ResultsOut(inds2(ind2), 1);
+   Z1 = ResultsOut(inds1(ind1), 5);
+   Z2 = ResultsOut(inds2(ind2), 5);
+
+   subplot(nRows, nCols, 1); hold on;
+   fill([X1 X1 X2 X2], [LLR_CutOff, Y1, Y2, LLR_CutOff], clr, 'EdgeColor', clr, 'LineWidth', 1);
+
+   subplot(nRows, nCols, 5); hold on;
+   fill([Z1 Z1 Z2 Z2], [LLR_CutOff, Y1, Y2, LLR_CutOff], clr, 'EdgeColor', clr, 'LineWidth', 1);
 end
 
 %% Overlay stratified samples by gamma
-for mm = 1 : 6
-   ind1 = find(ResultsOut(:,    6) >= (mm + 3)/10);
-   ind2 = find(ResultsOut(ind1, 6) <  (mm + 4)/10);
-   inds = ind1(ind2);
-   clrB = (0.9 - mm/10);  clrR  = 1 - clrB;  clr = [ clrR, 0, clrB ];
-   sz   = 2; 
+for mm = 1 : 18
+   clrB = (0.9 - mm/20);  clrR  = 1 - clrB;  clr = [ clrR, 0, clrB ];
 
-    for nn = [6 8] %1 : nPars 
-        subplot(nRows, nCols, nn); hold on;
-        for ii = 1 : numel(inds)
-            XX = ResultsOut(inds(ii),nn); YY = ResultsOut(inds(ii),end);
-            plot([XX XX], [YY LLR_CutOff], '-' , 'color', clr, 'linewidth', sz);
-        end
-    end
+   val0  = 0.38 + 0.6*(mm - 1)/19;
+   val1  = 0.38 + 0.6*(mm - 0)/19;
+   val2  = 0.38 + 0.6*(mm + 1)/19;
+
+   inds1 = find(ResultsOut(:, 6) >= val0 & ResultsOut(:, 6) < val1 );
+   inds2 = find(ResultsOut(:, 6) >= val1 & ResultsOut(:, 6) < val2 );
+   [~, ind1] = min(ResultsOut(inds1,end));
+   [~, ind2] = min(ResultsOut(inds2,end));
+   Y1 = ResultsOut(inds1(ind1), end);
+   Y2 = ResultsOut(inds2(ind2), end);
+   X1 = ResultsOut(inds1(ind1), 6);
+   X2 = ResultsOut(inds2(ind2), 6);
+   Z1 = ResultsOut(inds1(ind1), 8);
+   Z2 = ResultsOut(inds2(ind2), 8);
+
+   fprintf('mm = %d\n', mm);
+
+   subplot(nRows, nCols, 6); hold on;
+   fill([X1 X1 X2 X2], [LLR_CutOff, Y1, Y2, LLR_CutOff], clr, 'EdgeColor', clr, 'LineWidth', 1);
+
+   subplot(nRows, nCols, 8); hold on;
+   fill([Z1 Z1 Z2 Z2], [LLR_CutOff, Y1, Y2, LLR_CutOff], clr, 'EdgeColor', clr, 'LineWidth', 1);
 end
 
 %% Add vertical lines and titles to each subplot
@@ -146,13 +165,15 @@ for nn = 1:nPars
     indPar = Order(nn);
     subplot(nRows, nCols, nn); hold on;
     plot([ParMin(indPar), ParMin(indPar)], [0, LLR_CutOff], 'w:', 'LineWidth', 2);
+    set(gca, 'FontName', 'Arial', 'FontSize', 10);
 
     if ParMin(indPar) < 10
         STR1 = sprintf('%s=%.2g%s', labels{indPar}, ParMin(indPar), Units{indPar});
     else
         STR1 = sprintf('%s=%.0f%s', labels{indPar}, ParMin(indPar), Units{indPar});
     end
-    title(STR1, 'FontSize', tfs, 'Color', 'k');
+    title(STR1, 'FontSize', tfs, 'Color', 'k', 'FontName', 'Arial');
+    
 
     set(gca, 'YDir', 'reverse');
     if nn == indGamma
